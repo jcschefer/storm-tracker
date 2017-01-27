@@ -1,3 +1,5 @@
+var DRAW_LINES = true;
+
 function update( json, map, markers, begin) {
    // 1. find the storms we need to display
    var current = [] ;
@@ -43,6 +45,18 @@ function update( json, map, markers, begin) {
                }),
             storm: current[i].storm
          } 
+      }
+      else if( DRAW_LINES )
+      {
+         var from = markers[i].mark.position;
+         var to   = new google.maps.LatLng(current[i].lat, current[i].lon);
+         var line = new google.maps.Polyline({
+            path: [from, to],
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
+            map:map
+         });
       }
    
       markers[i].mark.setPosition( new google.maps.LatLng( current[i].lat, current[i].lon ));
