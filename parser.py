@@ -36,6 +36,7 @@ def parse_file( path ):
             #
             if arr[ 0 ] != current_year:
                 #
+                year.append( storm )
                 years[ current_year ]   = year
                 year                    = []
                 current_year            = arr[ 0 ]
@@ -49,9 +50,11 @@ def parse_file( path ):
                 current_storm = arr[ 4 ]
                 #
             #
-            storm.append({'lat':arr[7], 'lon':arr[8], 'speed':arr[9]})
+            lon = 360.0 - float(arr[8])
+            storm.append({'lat':float(arr[7]), 'lon':int(lon * 100 + 0.5) / 100.0, 'speed':int(arr[9])})
             #
         #
+        years[ current_year ] = year
     #
     return years
     #
