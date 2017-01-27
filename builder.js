@@ -1,3 +1,57 @@
+function update( json, map, markers, begin) {
+   // 1. find the storms we need to display
+   var current = [] ;
+   var n = 0 ;
+   var t = json[ begin ].time;
+   while( begin + n < json.length && json[ begin + n ].time == t )
+   {
+      current.push( json[ begin + n ] )
+      n++;
+   }
+   
+   // 2. remove all markers not being used
+   for( m in markers )
+   {
+      for( var i = 0; i < current.length; i++ )
+      {
+         var contains = false;
+         if( markers[m].storm == current[i].storm )
+         {
+            contains = true;
+         }
+      }
+      if( !contains )
+      {
+         markers[m].mark.setMap(null);
+         delete markers[m];
+      }
+   }
+   
+   // 3. update or draw new ones
+   for( var i = 0; i < current.length; i++ )
+   {
+      if( !(i in markers) )
+      {
+         markers[i] = {
+            mark: new google.maps.Marker({
+                  position: new google.maps.LatLng( 0.0, 0.0 ),
+                  map: map,
+                  title: current[i].storm.toString(),
+                  icon:{
+                     url: 'icon.svg'
+                  }
+               }),
+            storm: current[i].storm
+         } 
+      }
+   
+      markers[i].mark.setPosition( new google.maps.LatLng( current[i].lat, current[i].lon ));
+   }
+   
+   return begin + n;
+}
+
+
 function track_storms( map )
 {
    $.ajaxSetup( { beforeSend: function(xhr){
@@ -7,24 +61,21 @@ function track_storms( map )
       }
    }});
 
-   $.getJSON( 'json_data/1970.json', function(json){
+   $.getJSON( 'json_data/1970_time.json', function(json){
       var markers = {};
-      console.log(json['1970'][0][0]);
-      for( var year in json )
-      {
-         for( var storm_num = 0; storm_num < json[year].length; storm_num++ )
+
+      var i = 0;
+      var refreshId = setInterval( function() { 
+         if( i >= json.length )
          {
-            var unique_index = year + storm_num.toString();
-            markers[ unique_index ] =  new google.maps.Marker({
-               position: new google.maps.LatLng( json[year][storm_num][0].lat, json[year][storm_num][0].lon ),
-               map: map,
-               title: unique_index,
-               icon: {
-                  url: 'icon.svg'
-               }
-            });
+            clearInterval( refreshId );
+            return;
          }
-      }
+
+         i = update(json, map, markers, i);
+         
+      }, 50);
+
    });
 }
 
