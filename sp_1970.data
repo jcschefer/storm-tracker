@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Unisys Weather </title>
+<meta name="description" content="The intent of this weather site is to provide a complete source of graphical weather 		information. This is intended to satisfy the needs of the weather professional, but can be a tool for the casual user as well. The graphics and data are displayed as a meteorologist would expect to see. For the novice user, there are detailed explanation pages to guide them through the various plots, charts and images. The data on this site are provided from the National Weather Service via the NOAAPORT satellite data service. All the images are generated using the Weather Processor (WXP) analysis package which is available from Unisys. "/>
+<meta name="keywords" content="weather, unisys, unisys weather, weather maps, maps, nam, wrf, GFS, GFSx, hurricane, radar, satellite, surface, upper air" />
+<meta name="copyright" content="Unisys Corp - 2014" />
+<meta name="author" content="Unisys Corporation" />
+<meta name="email" content="technical-support@weather.unisys.com" />
+<meta name="Distribution" content="Global" />
+<meta name="Rating" content="General" />
+<meta name="Robots" content="INDEX,FOLLOW" />
+<meta name="Revisit-after" content="7 Days" />
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta http-equiv="Refresh" content="900" />
+<meta http-equiv="X-UA-Compatible" content="IE=8"/>
+<link rel="stylesheet" type="text/css" href="http://weather.unisys.com/css/WMAX.v1.0.2.css" />
+</head>
+<body>
+<div id="wrap">
+  <div id="top-menu">
+    <ul id="top-navigation" class="inline-navigation-list">
+      <li><a href="http://www.unisys.com" title="Unisys Home Page">Unisys.com</a></li>
+      <li><a href="http://weather.unisys.com/index.php" title="Unisys Weather">Weather Home</a></li>
+      <li><a href="http://weather.unisys.com/analyses.php" title="Analyses">Analyses</a></li>
+      <li><a href="http://weather.unisys.com/forehome.php" title="Forecast">Forecasts</a></li>
+      <li><a href="http://weather.unisys.com/archives.php" title="Archives">Archives</a></li>
+      <li><a href="http://weather.unisys.com/links.php" title="NOAA Links">NOAA Links</a></li>
+      <li><a href="http://weather.unisys.com/contactus.php" title="Contact Us">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <div id="header"> <a href="http://unisys.com"><img src="http://weather.unisys.com/images/unisys_logo_syt_2016.png" alt="Unisys" /></a>
+    <h1>Unisys Weather</h1>
+  </div>
+
+<div id="leftside">
+  <ul class="avmenu">
+    <li><a href="http://weather.unisys.com/index.php" class="blue">Unisys Weather</a></li>
+    <li><a href="http://weather.unisys.com/index.php">Weather Home</a></li>
+    <li><a href="http://weather.unisys.com/news">Weather News</a></li>
+    <li><a href="http://weather.unisys.com/solutions/index.php">Weather Solutions</a></li>
+    <li><a href="http://weather.unisys.com/info/index.php">Information</a></li>
+    <li><a href="http://weather.unisys.com/content.php">Contents</a></li>
+    <li><a href="http://weather.unisys.com/analyses.php" class="blue">Analyses</a></li>
+    <li><a href="http://weather.unisys.com/satellite/index.php">Satellite Images</a></li>
+    <li><a href="http://weather.unisys.com/surface/index.php">Surface Data</a></li>
+    <li><a href="http://weather.unisys.com/upper_air/index.php">Upper Air Data</a></li>
+    <li><a href="http://weather.unisys.com/radar/index.php">Radar Data</a></li>
+    <li><a href="http://weather.unisys.com/forehome.php" class="blue">Forecasts</a></li>
+    <li><a href="http://weather.unisys.com/mos/index.php">Model Statistics</a></li>
+    <li><a href="http://weather.unisys.com/nam/index.php">NAM/Wrf Model</a></li>
+    <li><a href="http://weather.unisys.com/gfs/index.php?r=us">GFS/Avn Model</a></li>
+    <li><a href="http://weather.unisys.com/rap/index.php">RAP Model</a></li>
+    <li><a href="http://weather.unisys.com/ecmwf/index.php">ECMWF Model</a></li>
+    <li><a href="http://weather.unisys.com/archives.php" class="blue">Archive</a></li>
+    <li><a href="http://weather.unisys.com/hurricane/index.php">Hurricane Data</a></li>
+    <li><a href="http://weather.unisys.com/archive/index.php">Archive of Images</a></li>
+    <li><a href="http://weather.unisys.com/usgs/index.php">USGS Maps</a></li>
+  </ul>
+</div>
+
+<div id="extras">
+  <ul class="avmenu">
+    <li><a href="http://weather.unisys.com/foresetup.php" class="blue">Get a Forecast</a></li>
+  </ul>
+
+<script type="text/javascript">
+function fsubmit()
+{
+     document.getElementById("Forecast").submit();
+}
+</script>
+
+  <form method="get" id="Forecast" action="http://weather.unisys.com/forecast.php">
+    <p class="center"> Enter a zip code or city name to get forecast:
+      <input type="text" name="Name" id="Name" size="15" />
+      <br />
+      <button type="submit" style="border:none; background-color:transparent;">
+         <img src="http://weather.unisys.com/images/gobutton-blue.png" id="Go" alt="Get Forecast Data" style="height:20px;" />
+      </button>
+      <a href="http://weather.unisys.com/foresetup.php"><img src="http://weather.unisys.com/images/setupbutton-blue.png" alt="Setup Location" height="20" width="70" /></a> </p>
+  </form>
+  <script type="text/javascript">
+                <!-- HIDE
+                var index = document.cookie.indexOf("ZIP")
+                var zipcode = 0
+                var region = ""
+                if( index != -1 ){
+                   //zipcode = parseInt( document.cookie.substring(index+4,index+9),10)
+                   zipcode = document.cookie.substring(index+4,index+9)
+                   var validateZipCode = function() {
+                     var zipcodeRegexp = /^\d{5}$/;
+                     var zipTest = zipcodeRegexp.test(zipcode);
+   
+                     if (zipTest == false) {
+                       return false;
+                     }
+                   }
+                   validateZipCode();
+
+                    if( ! isNaN(zipcode))
+
+                    document.getElementById('Name').value = zipcode
+
+                   if( zipcode >= 01000 && zipcode <= 19699 )
+                      region = "ne"
+                   else if( zipcode >= 19700 && zipcode <= 28999 )
+                      region = "at"
+                   else if( zipcode >= 43000 && zipcode <= 45999 )
+                      region = "at"
+                   else if( zipcode >= 29000 && zipcode <= 36999 )
+                      region = "se"
+                   else if( zipcode >= 38600 && zipcode <= 39999 )
+                      region = "se"
+                   else if( zipcode >= 46000 && zipcode <= 58999 )
+                      region = "mw"
+                   else if( zipcode >= 60000 && zipcode <= 62999 )
+                      region = "mw"
+                   else if( zipcode >= 68000 && zipcode <= 69999 )
+                      region = "mw"
+                   else if( zipcode >= 63000 && zipcode <= 67999 )
+                      region = "cp"
+                   else if( zipcode >= 71600 && zipcode <= 74999 )
+                      region = "cp"
+                   else if( zipcode >= 70000 && zipcode <= 71499 )
+                      region = "sp"
+                   else if( zipcode >= 75000 && zipcode <= 79999 )
+                      region = "sp"
+                   else if( zipcode >= 59000 && zipcode <= 59999 )
+                      region = "nw"
+                   else if( zipcode >= 82000 && zipcode <= 83999 )
+                      region = "nw"
+                   else if( zipcode >= 97000 && zipcode <= 99499 )
+                      region = "nw"
+                   else if( zipcode >= 80000 && zipcode <= 81999 )
+                      region = "sw"
+                   else if( zipcode >= 84000 && zipcode <= 96199 )
+                      region = "sw"
+
+                   if( region != "" ){
+                      document.write( "<table border=\"0\" align=\"center\" class=\"grey\" width=\"100%\">" )
+                      document.write( "<tr>" )
+                      document.write( "<td valign=\"top\">" )
+                      document.write( "<a href=/surface/sfc_map.php?image=sfc&inv=0&t=cur&region=" + region +">" )
+                      document.write( "<b>Sfc" )
+                      document.write( "</b></a>" )
+                      document.write( "</td>" )
+                      document.write( "<td valign=\"top\">" )
+                      document.write( "<a href=\"radar/rad" + region + ".php\">" )
+                      document.write( "<a href=/radar/rcm_rad.php?image=rad&inv=0&t=cur&region=" + region +">" )
+                      document.write( "<b>Rad" )
+                      document.write( "</b></a>" )
+                      document.write( "</td>" )
+                      document.write( "<td valign=\"top\">" )
+                      document.write( "<a href=/satellite/sat_vis.php?image=vis&inv=0&t=cur&region=" + region +">" )
+                      document.write( "<b>Vis" )
+                      document.write( "</b></a>" )
+                      document.write( "</td>" )
+                      document.write( "<td valign=\"top\">" )
+                      document.write( "<a href=/satellite/sat_vis.php?image=enh&inv=0&t=cur&region=" + region +">" )
+                      document.write( "<b>IR" )
+                      document.write( "</b></a>" )
+                      document.write( "</td>" )
+                      document.write( "</tr></table>" )
+                      document.write( "</b>" )
+                      }
+
+
+                   
+                   }
+                // UNHIDE -->
+                </script>
+  <ul class="avmenu">
+    <li><a href="http://weather.unisys.com/links.php" class="blue">NOAA Links</a></li>
+    <li><a href="http://lwf.ncdc.noaa.gov/">National Climatic Data Center</a></li>
+    <li><a href="http://www.cpc.noaa.gov/">Climate Prediction Center</a></li>
+    <li><a href="http://oceanservice.noaa.gov/">National Ocean Service</a></li>
+    <li><a href="http://www.lib.noaa.gov/">NOAA Library</a></li>
+    <li><a href="http://www.oar.noaa.gov/">NOAA Office of Oceanic and Atmospheric Research</a></li>
+    <li><a href="http://www.esrl.noaa.gov/">Earth Systems Research Laboratory</a></li>
+    <li><a href="http://weather.unisys.com/overview.php" class="blue">About Us</a></li>
+    <li><a href="http://weather.unisys.com/overview.php" title="Contact Us">Overview</a></li>
+    <li><a href="http://weather.unisys.com/contactus.php" title="Contact Us">Contact Us</a></li>
+  </ul>
+  <a href="http://www.nws.noaa.gov/com/weatherreadynation"><img src="http://weather.unisys.com/images/WRN_Ambassador_logo_small.png" width="150" height="114" alt="WRN Logo" border="0" /></a>
+</div>
+<div id="content">
+
+<h1>File Not Found</h1>
+  <h2>Error Type: 404</h2>
+  <p>Ooops! The page you are looking for &#8212; http://weather.unisys.com/hurricane/s_pacific/1970.data &#8212; cannot be found. This may be because:</p>
+  <ul>
+    <li>the path to the page was entered wrong;</li>
+    <li>the page name has recently changed;</li>
+    <li>the page no longer exists; or</li>
+    <li>there has been an error on the Web site.</li>
+  </ul>
+  <p>You can use the menu on the left to navigate to another section.</p><p><a href="javascript:history.go(-1)"><< Go back to previous page.</a></p><div class="clearboth">&nbsp;</div>
+
+</div>
+
+<div id="footer"> <span id="copyright"><small>Copyright &copy; Unisys 2017</small></span>
+  <ul class="inline-navigation-list" id="bottom-navigation">
+    <li><a href="http://www.unisys.com/unisys/privacy.html" target="_blank">Privacy Notice</a></li>
+    <li><a href="http://www.unisys.com/unisys/terms-and-conditions.html" target="_blank">Terms of Use</a></li>
+    <li><a href="http://weather.unisys.com/contactus.php">Contact Us</a></li>
+    <li><a href="http://www.unisys.com/unisys/trademarks.html" target="_blank">Trademarks</a></li>
+  </ul>
+</div>
+</div>
+</body>
+</html>
