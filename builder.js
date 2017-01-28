@@ -1,5 +1,7 @@
 var DRAW_LINES = true;  // draw the path while the storm is moving
-var KEEP_LINES = false;  // keep the lines once the storm has died out
+var KEEP_LINES = true;  // keep the lines once the storm has died out
+
+var COLORS = {2:'#FF0000', 3: '#00FF00', 4:'#0000FF', 5:'#FFFF00', 6:'#00FFFF', 7:'#OOOOOO', 8: '#FFFFFF', 9:'#FF00FF', 0:'#0F0F0F', 1:'#aaa1a1'}
 
 function update( json, map, markers, begin) {
    // 1. find the storms we need to display
@@ -50,9 +52,9 @@ function update( json, map, markers, begin) {
                }),
             line: new google.maps.Polyline({
                path: [],
-               strokeColor: '#FF0000',
+               strokeColor: COLORS[current[i].time.substring(3,4)],
                strokeOpacity: 1.0,
-               strokeWeight: 2,
+               strokeWeight: 4,
                map:map
             }),
             storm: current[i].storm
