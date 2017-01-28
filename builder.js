@@ -3,7 +3,7 @@ var KEEP_LINES = true;  // keep the lines once the storm has died out
 
 var COLORS = {2:'#FF0000', 3: '#00FF00', 4:'#0000FF', 5:'#FFFF00', 6:'#00FFFF', 7:'#OOOOOO', 8: '#FFFFFF', 9:'#FF00FF', 0:'#0F0F0F', 1:'#aaa1a1'}
 
-var DATAFILE = 'json_data/wp_1870_time.json'
+var DATAFILE = 'json_data/wp_1970_time.json'
 
 function update( json, map, markers, begin) {
    // 1. find the storms we need to display
@@ -106,10 +106,10 @@ function track_storms( map )
 
 function initialize() 
 {
-   //var map_center = new google.maps.LatLng( 21.0, 149.0 );
-   var map_center = new google.maps.LatLng( 0.0, 0.0 );
+   var map_center = new google.maps.LatLng( 21.0, 149.0 );       // to use for west pacific
+   //var map_center = new google.maps.LatLng( 0.0, 0.0 );        // to use for world view
    var map = new google.maps.Map( document.getElementById( 'mapCanvas' ), {
-      zoom: 2,
+      zoom: 4,
       center: map_center,
       mapTypeId: google.maps.MapTypeId.ROADMAP
    });
