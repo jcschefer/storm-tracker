@@ -1,5 +1,6 @@
-var DRAW_LINES = true;  // draw the path while the storm is moving
-var KEEP_LINES = true;  // keep the lines once the storm has died out
+var DRAW_LINES = true ;  // draw the path while the storm is moving
+var KEEP_LINES = true ;  // keep the lines once the storm has died out
+var DELAY_MS   = 25   ;
 
 var COLORS = {0:'#FF0000', 1: '#00FF00', 2:'#0000FF', 3:'#FFFF00', 4:'#00FFFF', 5:'#OOOOOO', 6: '#FFFFFF', 7:'#FF00FF', 8:'#0F0F0F', 9:'#aaa1a1'}
 
@@ -99,7 +100,7 @@ function track_storms( map )
 
          i = update(json, map, markers, i);
          
-      }, 50);
+      }, DELAY_MS );
 
    });
 }
