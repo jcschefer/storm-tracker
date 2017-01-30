@@ -65,7 +65,7 @@ function update( json, map, markers, begin) {
             line: new google.maps.Polyline({
                path: [],
                // strokeColor: COLORS[current[i].time.substring(3,4)],
-               strokeColor: rgbToHex(current[i].speed * 2, current[i].speed * 2, current[i].speed * 2),
+               strokeColor: rgbToHex(Math.sqrt(current[i].speed) * 20, Math.sqrt(current[i].speed) * 20, Math.sqrt(current[i].speed) * 20),
                strokeOpacity: 1.0,
                strokeWeight: 4,
                map:map
