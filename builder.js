@@ -2,9 +2,18 @@ var DRAW_LINES = true ;  // draw the path while the storm is moving
 var KEEP_LINES = true ;  // keep the lines once the storm has died out
 var DELAY_MS   = 25   ;
 
-var COLORS = {0:'#FF0000', 1: '#00FF00', 2:'#0000FF', 3:'#FFFF00', 4:'#00FFFF', 5:'#OOOOOO', 6: '#FFFFFF', 7:'#FF00FF', 8:'#0F0F0F', 9:'#aaa1a1'}
+var COLORS = {0:'#FF0000', 1: '#00FF00', 2:'#0000FF', 3:'#FFFF00', 4:'#00FFFF', 5:'#OOOOOO', 6: '#FFFFFF', 7:'#FF00FF', 8:'#0F0F0F', 9:'#aaa1a1'};
 
-var DATAFILE = 'json_data/wp_1970_time.json'
+var DATAFILE = 'json_data/wp_1970_time.json';
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
 
 function update( json, map, markers, begin) {
    // 1. find the storms we need to display
@@ -13,16 +22,17 @@ function update( json, map, markers, begin) {
    var t = json[ begin ].time;
    while( begin + n < json.length && json[ begin + n ].time == t )
    {
-      current.push( json[ begin + n ] )
+      current.push( json[ begin + n ] );
       n++;
    }
    
    // 2. remove all markers not being used
-   for( m in markers )
+   for(var m in markers )
    {
+      var contains = false;
       for( var i = 0; i < current.length; i++ )
       {
-         var contains = false;
+         contains = false;
          if( markers[m].storm == current[i].storm )
          {
             contains = true;
@@ -38,7 +48,6 @@ function update( json, map, markers, begin) {
          delete markers[m];
       }
    }
-   
    // 3. update or draw new ones
    for( var i = 0; i < current.length; i++ )
    {
@@ -55,7 +64,8 @@ function update( json, map, markers, begin) {
                }),
             line: new google.maps.Polyline({
                path: [],
-               strokeColor: COLORS[current[i].time.substring(3,4)],
+               // strokeColor: COLORS[current[i].time.substring(3,4)],
+               strokeColor: rgbToHex(current[i].speed * 2, current[i].speed * 2, current[i].speed * 2),
                strokeOpacity: 1.0,
                strokeWeight: 4,
                map:map
@@ -63,7 +73,7 @@ function update( json, map, markers, begin) {
             storm: current[i].storm
          } 
       }
-      else if( DRAW_LINES )
+      if( DRAW_LINES )
       {
          var pos = new google.maps.LatLng(current[i].lat, current[i].lon);
          var newp = markers[i].line.getPath();
