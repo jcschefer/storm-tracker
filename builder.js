@@ -35,7 +35,7 @@ function update( json, map, markers, begin) {
    for(var m in markers )
    {
       var contains = false;
-      for( var i = 0; i < current.length; i++ )
+      for(i = 0; i < current.length; i++ )
       {
          contains = false;
          if( markers[m].storm == current[i].storm )
@@ -45,6 +45,7 @@ function update( json, map, markers, begin) {
       }
       if( !contains )
       {
+         markers[m].mark.setMap(null);
          if( !KEEP_LINES )
          {
             markers[m].line.setPath([]);
@@ -52,8 +53,8 @@ function update( json, map, markers, begin) {
          if(markers[m].time.getDate() - curTime > KEEP_LINE_FOR ) {
             markers[m].line.setPath([]);
             delete markers[m];
+            console.log("deleted " + markers[m].storm + " (" + m + ")");
          }
-         markers[m].mark.setMap(null);
       }
    }
    // 3. update or draw new ones
@@ -76,11 +77,12 @@ function update( json, map, markers, begin) {
                strokeColor: rgbToHex(current[i].speed * 3, current[i].speed * 3, current[i].speed * 3),
                strokeOpacity: 1.0,
                strokeWeight: 4,
-               map:map
+               map: map
             }),
             storm: current[i].storm,
             time: new Date(current[i].time)
-         } 
+         }
+         console.log("made new storm at " + current[i].storm)
       }
       if( DRAW_LINES )
       {
