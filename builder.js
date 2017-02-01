@@ -59,9 +59,9 @@ function update( json, map, markers, begin) {
    // 3. update or draw new ones
    for( var i = 0; i < current.length; i++ )
    {
-      if( !(i in markers) )
+      if( !(current[i].storm in markers) )
       {
-         markers[i] = {
+         markers[current[i].storm] = {
             mark: new google.maps.Marker({
                   position: new google.maps.LatLng( 0.0, 0.0 ),
                   map: map,
@@ -85,12 +85,12 @@ function update( json, map, markers, begin) {
       if( DRAW_LINES )
       {
          var pos = new google.maps.LatLng(current[i].lat, current[i].lon);
-         var newp = markers[i].line.getPath();
+         var newp = markers[current[i].storm].line.getPath();
          newp.push(pos);
-         markers[i].line.setPath(newp);
+         markers[current[i].storm].line.setPath(newp);
       }
    
-      markers[i].mark.setPosition( new google.maps.LatLng( current[i].lat, current[i].lon ));
+      markers[current[i].storm].mark.setPosition( new google.maps.LatLng( current[i].lat, current[i].lon ));
    }
    
    return begin + n;
