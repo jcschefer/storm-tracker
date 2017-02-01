@@ -1,5 +1,8 @@
 var DRAW_LINES = true ;  // draw the path while the storm is moving
 var KEEP_LINES = true ;  // keep the lines once the storm has died out
+var KEEP_LINE_FOR = new Date();
+KEEP_LINE_FOR.setMonth(3);
+KEEP_LINE_FOR = KEEP_LINE_FOR.getDate();
 var DELAY_MS   = 25   ;
 
 var COLORS = {0:'#FF0000', 1: '#00FF00', 2:'#0000FF', 3:'#FFFF00', 4:'#00FFFF', 5:'#OOOOOO', 6: '#FFFFFF', 7:'#FF00FF', 8:'#0F0F0F', 9:'#aaa1a1'};
@@ -20,6 +23,8 @@ function update( json, map, markers, begin) {
    var current = [] ;
    var n = 0 ;
    var t = json[ begin ].time;
+   var curTime = new Date(t);
+   curTime = curTime.getDate();
    while( begin + n < json.length && json[ begin + n ].time == t )
    {
       current.push( json[ begin + n ] );
@@ -44,8 +49,11 @@ function update( json, map, markers, begin) {
          {
             markers[m].line.setPath([]);
          }
+         if(markers[m].time.getDate() - curTime > KEEP_LINE_FOR ) {
+            markers[m].line.setPath([]);
+            delete markers[m];
+         }
          markers[m].mark.setMap(null);
-         delete markers[m];
       }
    }
    // 3. update or draw new ones
@@ -70,7 +78,8 @@ function update( json, map, markers, begin) {
                strokeWeight: 4,
                map:map
             }),
-            storm: current[i].storm
+            storm: current[i].storm,
+            time: new Date(current[i].time)
          } 
       }
       if( DRAW_LINES )
